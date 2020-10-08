@@ -1,0 +1,19 @@
+{
+  "name": "2020_talk_all_hail_king_typoscript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tommarien/2020_talk_all_hail_king_typoscript.git",
+  "author": "Tom Marien <tommarien@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.1.2",
+    "reveal-md": "^4.1.6",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "reveal-md ./slides.md",
+    "dev": "tsc -w"
+  }
+}
