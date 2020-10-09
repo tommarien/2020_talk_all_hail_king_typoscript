@@ -8,6 +8,6 @@
     "margin": 0.1,
     "minScale": 0.5,
     "maxScale": 1.0,
-    "transition": "zoom",
+    "transition": "fade",
     "transition-speed": "slow"
 }

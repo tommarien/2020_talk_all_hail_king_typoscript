@@ -26,3 +26,9 @@ Copyright (©️) 2020 Euricom
 - As TypeScript is a superset of JavaScript, existing JavaScript programs are also valid TypeScript programs. <!-- .element: class="fragment" -->
 
 🤓 Demo <!-- .element: class="fragment" -->
+
+Note: Stress the fact that even there are type issues, typescript still compiles to js.
+
+---//
+
+### Guiding Principle
