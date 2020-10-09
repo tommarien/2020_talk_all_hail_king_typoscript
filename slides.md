@@ -27,7 +27,7 @@ Copyright (©️) 2020 Euricom
 
 🤓 Demo <!-- .element: class="fragment" -->
 
-Note: Stress the fact that even there are type issues, typescript still compiles to js.
+Note: Stress the fact that even if there are type issues, typescript still compiles to js.
 
 ---//
 
