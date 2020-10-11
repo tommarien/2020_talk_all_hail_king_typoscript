@@ -35,4 +35,4 @@ Note: Stress the fact that even if there are type issues, typescript still compi
 
 > The guiding principle of TypeScript's type system is that it should model JavaScript's runtime behavior.
 
-💥 Except `enum` and `Experimental Decorators`
+💥 They include stage 3 JavaScript features and contribute to TC39 committees. (except `enum` and [experimental decorators](https://tc39.es/proposal-decorators/) (stage 2))
