@@ -32,3 +32,7 @@ Note: Stress the fact that even if there are type issues, typescript still compi
 ---//
 
 ### Guiding Principle
+
+> The guiding principle of TypeScript's type system is that it should model JavaScript's runtime behavior.
+
+💥 Except `enum` and `Experimental Decorators`
