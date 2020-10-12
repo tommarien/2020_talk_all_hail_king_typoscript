@@ -15,7 +15,7 @@ Copyright (©️) 2020 Euricom
 
 ### Get to know the beast!
 
-<img src="./images/stitch.png" width="500px"/>
+<img src="./images/octopus.jpg" width="500px"/>
 
 ---//
 
@@ -35,4 +35,31 @@ Note: Stress the fact that even if there are type issues, typescript still compi
 
 > The guiding principle of TypeScript's type system is that it should model JavaScript's runtime behavior.
 
-💥 They include stage 3 JavaScript features and contribute to TC39 committees. (except `enum` and [experimental decorators](https://tc39.es/proposal-decorators/) (stage 2))
+🔥 Include stage 3 JavaScript features and contribute to TC39 committees. (except `enum` and [experimental decorators](https://tc39.es/proposal-decorators/) (stage 2))
+
+---//
+
+### Alternatives
+
+**1. JsDoc**
+
+```js
+/**
+ * Say hello to
+ * @param {string} name
+ * @return {string}
+ */
+function sayHello(name) {
+  return `Hello ${name}`;
+}
+```
+
+**2. Manual type definition files**
+
+🦿 You need to maintain it apart from the code itself, it's disconnect from the code. <!-- .element: class="fragment" -->
+
+---
+
+### Unleash the kraken!
+
+<img src="./images/kraken.jpg" width="800px"/>
