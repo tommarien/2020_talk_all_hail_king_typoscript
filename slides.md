@@ -56,7 +56,7 @@ function sayHello(name) {
 
 **2. Manual type definition files**
 
-🦿 You need to maintain it apart from the code itself, it's disconnect from the code. <!-- .element: class="fragment" -->
+🦿 You need to maintain it apart from the code itself, it's disconnected from your code. <!-- .element: class="fragment" -->
 
 ---
 
