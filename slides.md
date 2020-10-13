@@ -56,10 +56,33 @@ function sayHello(name) {
 
 **2. Manual type definition files**
 
-🦿 You need to maintain it apart from the code itself, it's disconnected from your code. <!-- .element: class="fragment" -->
+🦿 They need to be maintained disconnected from the code <!-- .element: class="fragment" -->
 
 ---
 
 ### Unleash the kraken!
 
 <img src="./images/kraken.jpg" width="800px"/>
+
+---//
+
+### Basic typing
+
+```ts
+// Boolean
+let isReady: boolean = false;
+
+// Number
+let digit: number = 1;
+
+// String
+let message: string = 'Message from the dark side';
+
+// Array
+let numbers: number[] = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
+
+// Tuple
+let point: [number, number] = [100, 200];
+```
+
+🤔 What is the difference between `string` and `String`?
