@@ -86,3 +86,23 @@ let point: [number, number] = [100, 200];
 ```
 
 🤔 What is the difference between `string` and `String`?
+
+---//
+
+### Functions
+
+```ts
+function divide(x: number, y: number): number {
+  return x / y;
+}
+
+function multiply(x: number, y: number): number {
+  return x * y;
+}
+
+function calculate(x: number, y: number, operation: any): number {
+  return operation(x, y);
+}
+```
+
+🤔 How can we type the operation parameter?

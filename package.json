@@ -6,6 +6,7 @@
   "author": "Tom Marien <tommarien@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "git-cz": "^4.7.1",
     "prettier": "^2.1.2",
     "reveal-md": "^4.1.6",
     "rimraf": "^3.0.2",
@@ -13,6 +14,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
+    "commit": "git-cz",
     "start": "reveal-md ./slides.md",
     "dev": "tsc -w"
   }
