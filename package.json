@@ -8,7 +8,7 @@
   "devDependencies": {
     "git-cz": "^4.7.1",
     "prettier": "^2.1.2",
-    "reveal-md": "^4.1.6",
+    "reveal-md": "^4.1.7",
     "rimraf": "^3.0.2",
     "typescript": "^4.0.3"
   },
