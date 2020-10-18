@@ -42,4 +42,4 @@ const add: IOperation = (x, y) => x + y;
 
 console.log('typed function expression', calculateWithType(3, 2, add));
 
-// 🎉 Notice that typescript is a structural typing language it only considers the structures !
+// 🎉 Notice that typescript is a structural typing language it only considers the structure!

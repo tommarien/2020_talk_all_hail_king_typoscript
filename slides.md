@@ -106,3 +106,35 @@ function calculate(x: number, y: number, operation: any): number {
 ```
 
 🤔 How can we type the operation parameter?
+
+---//
+
+### Structural 🤷‍♂️?
+
+```ts
+function getFullName({
+  //
+  firstName,
+  middleName,
+  lastName,
+}: Person): string {
+  return [firstName, middleName, lastName].join(' ');
+}
+
+const tomMarien = {
+  //
+  firstName: 'Tom',
+  middleName: 'Anna Michel',
+  lastName: 'Marien',
+};
+
+const billGates = {
+  firstName: 'Bill',
+  lastName: 'Gates',
+};
+
+console.log(getFullName(tomMarien));
+console.log(getFullName(billGates));
+```
+
+🤔 How can we type the Person object?
