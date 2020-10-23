@@ -1,9 +1,9 @@
 ---
-title: All hail king Typoscript
+title: All hail typoscript
 verticalSeparator: ---//
 ---
 
-## All hail king Typoscript
+## All hail typoscript
 
 <img src="./images/typescript.svg" width="400px"/><br>
 
@@ -35,7 +35,9 @@ Note: Stress the fact that even if there are type issues, typescript still compi
 
 > The guiding principle of TypeScript's type system is that it should model JavaScript's runtime behavior.
 
+<p class="fragment">
 🔥 Include stage 3 JavaScript features and contribute to TC39 committees. (except `enum` and [experimental decorators](https://tc39.es/proposal-decorators/) (stage 2))
+</p>
 
 ---//
 
@@ -85,7 +87,9 @@ let numbers: number[] = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
 let point: [number, number] = [100, 200];
 ```
 
+<p class="fragment">
 🤔 What is the difference between `string` and `String`?
+</p>
 
 ---//
 
@@ -105,24 +109,21 @@ function calculate(x: number, y: number, operation: any): number {
 }
 ```
 
+<p class="fragment">
 🤔 How can we type the operation parameter?
+</p>
 
 ---//
 
 ### Structural 🤷‍♂️?
 
 ```ts
-function getFullName({
-  //
-  firstName,
-  middleName,
-  lastName,
-}: Person): string {
+function getFullName(person: Person): string {
+  const { firstName, middleName, lastName } = person;
   return [firstName, middleName, lastName].join(' ');
 }
 
 const tomMarien = {
-  //
   firstName: 'Tom',
   middleName: 'Anna Michel',
   lastName: 'Marien',
@@ -137,4 +138,6 @@ console.log(getFullName(tomMarien));
 console.log(getFullName(billGates));
 ```
 
+<p class="fragment">
 🤔 How can we type the Person object?
+</p>

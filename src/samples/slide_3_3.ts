@@ -38,8 +38,18 @@ function calculateWithExpression(x: number, y: number, operation: Operation) {
 console.log('expression', calculateWithType(3, 2, multiply));
 
 // Once you get any of those you can even the an operation as a function expression
-const add: IOperation = (x, y) => x + y;
+const substract: IOperation = (x, y) => x - y;
 
-console.log('typed function expression', calculateWithType(3, 2, add));
+console.log('typed function expression', calculateWithType(3, 2, substract));
 
 // 🎉 Notice that typescript is a structural typing language it only considers the structure!
+
+// Overloads:
+function add(x: string, y: string): string;
+function add(x: number, y: number): number;
+function add(x: any, y: any): any {
+  return x + y;
+}
+
+console.log('Add with numbers', add(1, 1));
+console.log('Add with strings', add('1', '1'));
