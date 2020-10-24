@@ -141,3 +141,9 @@ console.log(getFullName(billGates));
 <p class="fragment">
 🤔 How can we type the Person object?
 </p>
+
+---//
+
+### 🧨 Types vs interfaces
+
+<img src="./images/deliver-what-you-promised.jpg" width="600px"/>
