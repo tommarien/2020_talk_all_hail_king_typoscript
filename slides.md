@@ -147,3 +147,70 @@ console.log(getFullName(billGates));
 ### 🧨 Types vs interfaces
 
 <img src="./images/deliver-what-you-promised.jpg" width="600px"/>
+
+---//
+
+### Literal types
+
+#### String
+
+```ts
+type Role = 'admin' | 'power-user' | 'user';
+
+type User = {
+  username: string;
+  role: Role;
+};
+
+const user: User = {
+  username: 'wvh',
+  role: 'admin',
+};
+```
+
+#### Numeric
+
+```ts
+type IconSize = 16 | 24 | 32 | 48 | 64;
+
+type Icon = {
+  name: string;
+  size: IconSize;
+};
+
+const deleteIcon: Icon = {
+  name: 'delete',
+  size: 32,
+};
+```
+
+#### Boolean
+
+```ts
+type Falsy = false | 0 | '' | null | undefined;
+```
+
+---//
+
+### Special types
+
+#### any
+
+```ts
+// it could be anything really
+let apiResult: any;
+
+// it allows without any check to call even deep properties
+const c = apiResult.a.b.c;
+```
+
+#### unknown
+
+```ts
+// you don't know the type but you need to check before accessing any props or functions
+let maybeString: unknown;
+
+if (typeof maybeString === 'string') {
+  console.log('first character', maybeString.substring(0, 1));
+}
+```
