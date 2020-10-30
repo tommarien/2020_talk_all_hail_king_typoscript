@@ -87,6 +87,58 @@ let point: [number, number] = [100, 200];
 
 ---//
 
+### Special types
+
+#### any
+
+```ts
+// it could be anything
+let apiResult: any;
+
+// it allows without any check to call even deep properties
+const c = apiResult.a.b.c;
+```
+
+#### unknown
+
+```ts
+// you don't know the type but you need to check
+// before accessing any props or functions
+let maybeString: unknown;
+
+if (typeof maybeString === 'string') {
+  console.log('first character', maybeString.substring(0, 1));
+}
+```
+
+#### void
+
+```ts
+function log(message: string): void {
+  return; // or return undefined
+}
+```
+
+---//
+
+### Special types
+
+#### never
+
+```ts
+const error: (message: string) => never = (message) => {
+  throw new Error(message);
+};
+
+function handle() {
+  error('Something fishy');
+
+  return; // 👎 Unreachable code detected.
+}
+```
+
+---//
+
 ### Functions
 
 ```ts
@@ -186,53 +238,25 @@ type Falsy = false | 0 | '' | null | undefined;
 
 ---//
 
-### Special types
-
-#### any
-
-```ts
-// it could be anything
-let apiResult: any;
-
-// it allows without any check to call even deep properties
-const c = apiResult.a.b.c;
-```
-
-#### unknown
-
-```ts
-// you don't know the type but you need to check before accessing any props or functions
-let maybeString: unknown;
-
-if (typeof maybeString === 'string') {
-  console.log('first character', maybeString.substring(0, 1));
-}
-```
-
-#### void
-
-```ts
-function log(message: string): void {
-  return; // or return undefined, but certain not return true;
-}
-```
+### Union and intersection types
 
 ---//
 
-### Special types
+### Type Guards
 
-#### never
+#### Built-in types
 
 ```ts
-const error: (message: string) => never = (message) => {
-  throw new Error(message);
-};
-
-function handle() {
-  error('Something fishy');
-
-  return; // 👎 Unreachable code detected.
+function padLeft(value: string | number, length: number): string {
+  if (typeof value === 'number') {
+    return `${value}`.padStart(length, '0');
+  } else {
+    return value.padStart(length, ' ');
+  }
 }
+
+console.log('string', padLeft('a', 10)); // "         a"
+console.log('number', padLeft(1, 10)); // "0000000001"
 ```
 
 ---
