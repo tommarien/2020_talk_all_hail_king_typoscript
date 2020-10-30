@@ -13,12 +13,6 @@ Copyright (©️) 2020 Euricom
 
 ---
 
-### Get to know the beast!
-
-<img src="./images/octopus.jpg" width="500px"/>
-
----//
-
 ### Typescript 🤷‍♂️
 
 - It is a strict syntactical superset of JavaScript and adds optional static typing to the language. <!-- .element: class="fragment" -->
@@ -62,9 +56,9 @@ function sayHello(name) {
 
 ---
 
-### Unleash the kraken!
+### Get to know the beast!
 
-<img src="./images/kraken.jpg" width="800px"/>
+<img src="./images/octopus.jpg" width="500px"/>
 
 ---//
 
@@ -240,3 +234,9 @@ function handle() {
   return; // 👎 Unreachable code detected.
 }
 ```
+
+---
+
+### Unleash the kraken!
+
+<img src="./images/kraken.jpg" width="800px"/>
