@@ -190,7 +190,7 @@ console.log(getFullName(billGates));
 
 ---//
 
-### 🧨 Types vs interfaces
+### 🧨 Types vs Interfaces
 
 <img src="./images/deliver-what-you-promised.jpg" width="600px"/>
 
@@ -238,13 +238,13 @@ type Falsy = false | 0 | '' | null | undefined;
 
 ---//
 
-### Union and intersection types
+### Union and Intersection types
 
 ---//
 
 ### Type Guards
 
-#### Built-in types
+#### Built-in Types
 
 ```ts
 function padLeft(value: string | number, length: number): string {
@@ -258,6 +258,14 @@ function padLeft(value: string | number, length: number): string {
 console.log('string', padLeft('a', 10)); // "         a"
 console.log('number', padLeft(1, 10)); // "0000000001"
 ```
+
+---//
+
+### Generics
+
+---//
+
+### Narrowing and Widening
 
 ---
 
