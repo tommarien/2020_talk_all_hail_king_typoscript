@@ -240,6 +240,52 @@ type Falsy = false | 0 | '' | null | undefined;
 
 ### Union and Intersection types
 
+#### Union Types
+
+```ts
+type ValidationFailed = {
+  success: false;
+  errors: string[];
+};
+
+type ValidationSuccess = {
+  success: true;
+};
+
+type ValidationResult = ValidationSuccess | ValidationSuccess;
+```
+
+💡 Read it as one type **OR** the other! <!-- .element: class="fragment" -->
+
+---//
+
+### Union and Intersection types
+
+#### Intersection Types
+
+```ts
+interface Keyed {
+  id: number;
+}
+
+type Customer = Keyed & {
+  name: string;
+};
+
+const pelckmans: Customer = {
+  id: 1,
+  name: 'Pelckmans',
+};
+```
+
+💡 Read it as one type **AND** the other! <!-- .element: class="fragment" -->
+
+---//
+
+### Union and Intersection types
+
+#### Discrimated Unions
+
 ---//
 
 ### Type Guards
