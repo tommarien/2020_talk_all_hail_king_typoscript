@@ -330,6 +330,37 @@ console.log('number', padLeft(1, 10)); // "0000000001"
 
 ---//
 
+### Type Guards
+
+#### Custom Types (in)
+
+```ts
+type Customer = { id: number };
+type Order = { id: number; customer: Customer };
+
+declare function fetch(): Customer | Order;
+
+const maybeOrder = fetch();
+
+if ('customer' in maybeOrder) {
+  console.log(maybeOrder.customer);
+}
+```
+
+#### Custom Types (User defined)
+
+```ts
+function isOrder(order: Customer | Order): order is Order {
+  return 'customer' in order;
+}
+
+if (isOrder(maybeOrder)) {
+  console.log(maybeOrder.customer);
+}
+```
+
+---//
+
 ### Generics
 
 ---//
@@ -341,3 +372,4 @@ console.log('number', padLeft(1, 10)); // "0000000001"
 ### Unleash the kraken!
 
 <img src="./images/kraken.jpg" width="800px"/>
+```
