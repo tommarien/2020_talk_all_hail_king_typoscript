@@ -361,7 +361,26 @@ if (isOrder(maybeOrder)) {
 
 ---//
 
-### Generics
+### Generics 🤷‍♂️?
+
+```ts
+type Animal = {
+  species: 'dog' | 'cat';
+  name: string;
+};
+
+const animals: Animal[] = [
+  { species: 'cat', name: 'Molly' },
+  { species: 'dog', name: 'Kai' },
+];
+
+function filter(items: readonly any[], match: (val: any) => boolean): any[] {}
+
+const cats = filter(animals, (animal) => animal.species === 'cat');
+console.log(cats);
+```
+
+🤔 How can we type the filter function so we could reuse it for other types? <!-- .element: class="fragment" -->
 
 ---//
 
