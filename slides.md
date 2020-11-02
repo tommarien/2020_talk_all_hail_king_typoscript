@@ -244,12 +244,12 @@ type Falsy = false | 0 | '' | null | undefined;
 
 ```ts
 type ValidationFailed = {
-  isValid: false;
+  success: false;
   errors: string[];
 };
 
 type ValidationSuccess = {
-  isValid: true;
+  success: true;
 };
 
 type ValidationResult = ValidationSuccess | ValidationFailed;
@@ -296,12 +296,13 @@ type Address = {
 declare function validate(address: Address): ValidationResult;
 
 const result = validate({
-  street: 'ssks',
-  houseNumber: '1',
-  city: 'city',
+  street: 'Schaliënhoevedreef',
+  houseNumber: '20J',
+  city: 'Mechelen',
 });
-if (!result.isValid) {
-  // errors is only available when isValid === false !
+
+if (!result.success) {
+  // errors is only available when !success !
   throw new Error(result.errors[0]);
 }
 ```
