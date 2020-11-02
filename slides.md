@@ -244,15 +244,15 @@ type Falsy = false | 0 | '' | null | undefined;
 
 ```ts
 type ValidationFailed = {
-  success: false;
+  isValid: false;
   errors: string[];
 };
 
 type ValidationSuccess = {
-  success: true;
+  isValid: true;
 };
 
-type ValidationResult = ValidationSuccess | ValidationSuccess;
+type ValidationResult = ValidationSuccess | ValidationFailed;
 ```
 
 💡 Read it as one type **OR** the other! <!-- .element: class="fragment" -->
@@ -284,7 +284,29 @@ const pelckmans: Customer = {
 
 ### Union and Intersection types
 
-#### Discrimated Unions
+#### Discriminated Unions
+
+```ts
+type Address = {
+  street: string;
+  houseNumber: string;
+  city: string;
+};
+
+declare function validate(address: Address): ValidationResult;
+
+const result = validate({
+  street: 'ssks',
+  houseNumber: '1',
+  city: 'city',
+});
+if (!result.isValid) {
+  // errors is only available when isValid === false !
+  throw new Error(result.errors[0]);
+}
+```
+
+💡 Every Literal Type can be used as a discriminator! <!-- .element: class="fragment" -->
 
 ---//
 
