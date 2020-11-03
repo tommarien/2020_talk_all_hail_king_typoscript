@@ -386,6 +386,16 @@ console.log(cats);
 
 ### Narrowing and Widening
 
+#### Literal Narrowing
+
+```ts
+const axis1 = 'x';
+
+let axis2 = 'y';
+```
+
+🤔 Which is the inferred type for both axes?
+
 ---
 
 ### Unleash the kraken!
