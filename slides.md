@@ -396,6 +396,68 @@ let axis2 = 'y';
 
 🤔 Which is the inferred type for both axes?
 
+---//
+
+### Narrowing and Widening
+
+#### Type Widening
+
+```ts
+const mixed = ['x', 1];
+```
+
+🤔 Which is the inferred type for mixed?
+
+- `('x' | 1)[]`
+- `['x | 1]`
+- `[string, number]`
+- `readonly [string, number]`
+- `(string|number)[]`
+- `readonly(string|number)[]`
+- ...
+
+---//
+
+### Narrowing and Widening
+
+#### Why is this important?
+
+```ts
+type Shape = {
+  x: number;
+  y: number;
+};
+
+type Rectangle = Shape & {
+  length: number;
+  width: number;
+};
+
+type Axes = keyof Shape; //💡 'x' | 'y'
+
+function getAxis(shape: Shape, axis: Axes) {
+  return shape[axis];
+}
+```
+
+```ts
+const r: Rectangle = {
+  x: 10,
+  y: 20,
+  width: 200,
+  length: 100,
+};
+
+// 👍 Works
+console.log(getAxis(r, 'x'));
+```
+
+```ts
+// 👎 Fails to compile, works in javascript
+let axis = 'y';
+console.log(getAxis(r, axis));
+```
+
 ---
 
 ### Unleash the kraken!
