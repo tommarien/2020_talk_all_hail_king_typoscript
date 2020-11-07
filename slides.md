@@ -13,13 +13,11 @@ Copyright (©️) 2020 Euricom
 
 ---
 
-### Typescript 🤷‍♂️
+### Typescript [📽️](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABAZwIYE8ASBTANruACjFQFtsBKRAbwChFEAnbKERpAAx3zkQBJqJcgF8OAblrDatCAmRxc2AHQEA5oTRY8BQgCIAomxizSuihQlA)
 
 - It is a strict syntactical superset of JavaScript and adds optional static typing to the language. <!-- .element: class="fragment" -->
 - TypeScript is designed for development of large applications and transcompiles to JavaScript. <!-- .element: class="fragment" -->
 - As TypeScript is a superset of JavaScript, existing JavaScript programs are also valid TypeScript programs. <!-- .element: class="fragment" -->
-
-🤓 Demo <!-- .element: class="fragment" -->
 
 Note: Stress the fact that even if there are type issues, typescript still compiles to js.
 
@@ -81,9 +79,7 @@ let numbers: number[] = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
 let point: [number, number] = [100, 200];
 ```
 
-<p class="fragment">
-🤔 What is the difference between `string` and `String`?
-</p>
+🤔 What is the difference between `string` and `String`? [📽️](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAFgUwDZJARgFw2gJwJZgDmMAvDAOSIojkDcAUKJLFagExa4HFmXKp16jcBBBIEAOlSEAFOSgB3ENij4iEGAEMcCGAgCOAV01JyAGnj90pEmVYg2ASgbDml6gGYsAZVXdSMGAICjC+arJ81OTOrtDuqAAsPn5EAUEhYdxy9tEuTKLiUiARisqZ6lo6gSCwBsamFvYeNnZWCTH0AGaGYMBQeOAweBDeCJqiYDJgmgC2CJwphI4wAN70MBswOlCGOGAwANrkEAAO4eYUEIYzczgX5JqGOzNg9woEUAh3ALoSBMBIQwAEwQECmswQMQAvkJ8mJJNI5FxUgAiU7hFFDDSabBjCYXYajcbgJFnbjRGIAekpMDhhUR5HKxDRZKImOG1VgOIgePABJGvMm6VCi1J50cEtoQA)
 
 ---//
 
@@ -121,18 +117,15 @@ function log(message: string): void {
 
 ---//
 
-### Special types
-
-#### never
+#### never [📽️](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABAUwE6rqgFAW2QZ3wEMBzZALkXylRjBIEpKxkA3NRAbwChFEoAFhgDuiFqICi6TLgLEyDANzcAvt26hIsBIgFEwAEwA2yLAy68U07AHIAynDyC6JRMBj4BATxtLLqZCgQVDBFRAB6cMRAXg3AOR3EAFUwAKIIPQAjE0QIOANkRDyoZGhkAwA6VSA)
 
 ```ts
-const error: (message: string) => never = (message) => {
+function error(message: string): never {
   throw new Error(message);
-};
+}
 
 function handle() {
   error('Something fishy');
-
   return; // 👎 Unreachable code detected.
 }
 ```
@@ -155,20 +148,40 @@ function calculate(x: number, y: number, operation: any): number {
 }
 ```
 
-<p class="fragment">
-🤔 How can we type the operation parameter?
-</p>
+🤔 How can we type the operation parameter? [📽️](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABAExgNxsgpgCgB4BciYIAtgEZYBOANIgJ5EkXUCUTZlViA3gFCJEVLFBBUkeRAHoGAbj4BfPn1CRYCRKRAAbWAAdt9fBxa0GJru2KdqvAUJFiJiAFRzFy1dHhIIAQ20IHT8oXEJrUzpGCK46OD1qEJ8iPzB6K2YuO0FhUXFEeMT1MHwo1nklPggEAGc4bSwAOm04AHMcACJUDGxEAE5EcnpEAGZEGBqOun9A4NCcProRum7MLFZyqtr6ppb2jq1dGANhgBZB4bGJqcQZoO0Q3FOlukP9Qw35IA)
+
+---//
+
+#### Inferring function parameters [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBA8pBOBDYBLA9gOygXigCgA8AuKDAVwFsAjCeAGihBPOtoEocA+Uym+AbgBQggMaYAzsCjiyVYEhHAScWsnRZchBiA7ZuBKAFpGQ0RLQAbCADoLaAOZ4ARDLkLUGe1ACsUNADMoAA4oFHEnBld5REU8IIZvNjZ+IA)
+
+```ts
+type Operation = (x: number, y: number) => number;
+
+const subtract: Operation = (x, y) => x - y;
+
+console.log('subtracting 5 of 8 is', subtract(8, 5));
+```
+
+---//
+
+#### Function overloads [📽️](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABAQwCaoBQA8BciDOUATjGAOYA0iAnnoSeQJR3GlkDcAUKJLAiumx4wIALYAjAKZEqtRCInTm8sVKJce0eEjSZcKMNVl5kh5aeqIA3p0SIikqCCJIsiANQ0uAX06cICPhwADaSAHTBcGQYAEQAguiIAO4wUAAWKopE+DFUuhgAjFQFjIxcAWBBoRFRsQmoyakZ9Gw5eYIxBbmInTGl7EA)
+
+```ts
+function add(x: string, y: string): string;
+function add(x: number, y: number): number;
+function add(x: any, y: any): any {
+  return x + y;
+}
+
+console.log('Add with numbers', add(1, 1));
+console.log('Add with strings', add('1', '1'));
+```
 
 ---//
 
 ### Structural 🤷‍♂️?
 
 ```ts
-function getFullName(person: Person): string {
-  const { firstName, middleName, lastName } = person;
-  return [firstName, middleName, lastName].join(' ');
-}
-
 const tomMarien = {
   firstName: 'Tom',
   middleName: 'Anna Michel',
@@ -180,13 +193,55 @@ const billGates = {
   lastName: 'Gates',
 };
 
+function getFullName(person: Person): string {
+  const { firstName, middleName, lastName } = person;
+  return [firstName, middleName, lastName].join(' ');
+}
+
 console.log(getFullName(tomMarien));
 console.log(getFullName(billGates));
 ```
 
-<p class="fragment">
-🤔 How can we type the Person object?
-</p>
+🤔 How can we type the Person object? [📽️](https://www.typescriptlang.org/play?#code/MYewdgzgLgBFIFsCyBDATgSwKZhgXhgG8AoGGAMwzWgDkUEsAuGAIgBVEWAaUmBDACYCANljoNmLAIJgwKGEgzAAFlmHdewlLXpNWqTDg0BfANzFioSLABGGYcIDiKKFgj4ivStSji9LACF7dR4yLR0JVmdXCBNzYnIAVzBgKAxwGABzLCgAMUSHPwAKAAcsanBmAAVyiHAASmZoTDBMzzIraCIKKgisLj5BETFdAfDfXRhjDzKKsHMyNBzEtFwAbW8+gf4hUT8x7QmGAF0AOgArEAwwIpZWevNjC06QUVPhEEyi7LyC4WL4Mh0NgwPUHpZwHU3h8vj98oVdEU7A5om4waYgA)
+
+---//
+
+### Literal Object [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAChBOBnA9gOygXigbwFBSgDMBLJYAOQEMBbCALikWHmNQHMBufKa4gEz4AbCFVoB+BkxbsuBQZSaj6jZq064Avl1yEArqgDGwYmihsIwAGK7BgpQApISNAzjPUASkmr2ObgbQmHCJSRRoIABoefiERcKj5MNooDUwoJxRUWSh4C114dABtEjIlKN4BYTKoRIpwgF0AOhJBYAR7ACFkZGFKT0aAK2RWewAiKFGPLg1cXAB6OahAXg3AWR2oABFiREpbZAB3RGimcDVcANQUYUbBZDZ7bnMrGztw+zwCAhKk5VGAFWRqKMItw5Ao6rQGKMALKUFgQVBAkFQBYVPgQF4QiYAQShiIIGg8uCmswWUAAkqhCAhcnwoKBIFBUMgoFtELoIIcABYICBnQLAKBDTmoSwAaXhqAgfBAaXeIVK4UhAClkMK8dEBOilJDLOratqJuLUJLpYitLNzpcINdbvZHtZbA4hSKjSaQB4pkA)
+
+```ts
+type Person = {
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+};
+
+function getFullName(person: Person): string {
+  const { firstName, middleName, lastName } = person;
+  return [firstName, middleName, lastName].filter(Boolean).join(' ');
+}
+```
+
+```ts
+// 👍 Disallows mistyping
+console.log(
+  getFullName({
+    firstName: 'Tom',
+    lastName: 'Marien',
+    //middelName: "AM",
+  })
+);
+```
+
+```ts
+// Inferred type no issues here
+const johnFKennedy = {
+  firstName: 'John',
+  middelName: 'F',
+  lastName: 'Kennedy',
+};
+
+console.log(getFullName(johnFKennedy));
+```
 
 ---//
 

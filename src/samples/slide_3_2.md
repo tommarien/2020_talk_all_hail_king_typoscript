@@ -1,3 +1,4 @@
+```ts
 const hello1: string = 'hello';
 const hello2: string = 'hello';
 
@@ -12,5 +13,6 @@ function isSeason(name: string) {
   return ['spring', 'summer', 'autumn', 'winter'].includes(name);
 }
 
-console.log('Strings are not strings', isSeason('spring'));
-// console.log('Strings are not strings', isSeason(new String('spring')));
+console.log('string "spring" is a season', isSeason('spring'));
+// console.log('String "spring" is not a season', isSeason(new String('spring')));
+```
