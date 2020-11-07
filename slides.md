@@ -518,4 +518,3 @@ console.log(getAxis(r, axis));
 ### Unleash the kraken!
 
 <img src="./images/kraken.jpg" width="800px"/>
-```
