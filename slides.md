@@ -245,15 +245,17 @@ console.log(getFullName(johnFKennedy));
 
 ---//
 
-### 🧨 Types vs Interfaces
+### 🧨 Types vs Interfaces [📽️](https://www.typescriptlang.org/play?#code/PTAEGUFcAdoewM4FNQENQBsCWAjUSAPeZBUAFwAstSsA7MpAJwDNUBjJAKDoZfZQCSAJSQBHSEgRkA8tDJY4tUgG9OoUJEYYAXKCmM6AcwDca0AFsklOABNd+o6YC+nTs0i028xaGZW2FAAUcHIKSrrCYhJSst5KAJSgqupsighwGEgAdBhwhoEARH5kAQUANEmgIXGkTvHOriCgArSgAJ5wmqCpNkgVOJBk7Z2gAO6o9PgEDLQ2oFhkbv5ByRpaugUUZGTQ2iCGcHmZWanm5WaW1nagBYZW5+rQqIyo5gi6q4+od7oAjGVmJwAurGIA)
 
 <img src="./images/deliver-what-you-promised.jpg" width="600px"/>
+
+💡 A `type` can be use to create a `function type expression`!
 
 ---//
 
 ### Literal types
 
-#### String
+#### String [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBASg9gG2gXigIgIYBMC2BLAOzSgB90w4B3CAJwFoBXAZ1uLLWdYG4AoH0SFACqLGlFQBvHlCicaBDDggAuKE2A1CAc14yaiFbAO8Avrx4BjOAXWzRqkbXFQpMuQqWq0lAG4ALNAAaaSh9JC9sfCIeMyA)
 
 ```ts
 type Role = 'admin' | 'power-user' | 'user';
@@ -310,11 +312,9 @@ type ValidationSuccess = {
 type ValidationResult = ValidationSuccess | ValidationFailed;
 ```
 
-💡 Read it as one type **OR** the other! <!-- .element: class="fragment" -->
+💡 Read it as one type **OR** the other!
 
 ---//
-
-### Union and Intersection types
 
 #### Intersection Types
 
@@ -333,13 +333,11 @@ const pelckmans: Customer = {
 };
 ```
 
-💡 Read it as one type **AND** the other! <!-- .element: class="fragment" -->
+💡 Read it as one type **AND** the other!
 
 ---//
 
-### Union and Intersection types
-
-#### Discriminated Unions
+#### Discriminated Unions [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAaghgGwJYBM7CQewHYDE5IIQpQC8UA3gFBRQDOArgMZMR10BcUAZonRAG4aUCACdRmUZ3rBRSbAHMA2gF0hAXyFVQkWIlTos2AMrNW7MpWGMWbabIaCqmqtvDR4yNBhwAlNgwIwJaeBj4mZnZQAD56XoY4+ITEWjrQAIIoKKJR5NS0dLIQEMBchXKKQrQAFpgM-AByDAC2AEZiZbLyClVQTEignRU9zlooEEwIcDk8DNhM4VAAbvreEAAUcFk57FyZ2XYAlFyh3kb+jEFaTDiFUDuBweQr8cAb+TI5JVwARMZM1X0AGvsLUIEtiF9uD8ADTCWr1CBNNodKA-ABMAAYAFKw4T9QZogCyE2qECI2Dx6kOWiQ3Cg6wAhA8ggA6GzmOiHKy0AD0vJE4kkdCgSBFOAQICgcBWhDgrSIUAA7mTsFBGRyoozhMBqhIlVBsBADQBRIWidYs4CssQSKRKTEqGnOIA)
 
 ```ts
 type Address = {
@@ -349,7 +347,9 @@ type Address = {
 };
 
 declare function validate(address: Address): ValidationResult;
+```
 
+```ts
 const result = validate({
   street: 'Schaliënhoevedreef',
   houseNumber: '20J',
@@ -384,8 +384,6 @@ console.log('number', padLeft(1, 10)); // "0000000001"
 ```
 
 ---//
-
-### Type Guards
 
 #### Custom Types (in)
 
@@ -435,7 +433,7 @@ const cats = filter(animals, (animal) => animal.species === 'cat');
 console.log(cats);
 ```
 
-🤔 How can we type the filter function so we could reuse it for other types? <!-- .element: class="fragment" -->
+🤔 How can we type the filter function so we could reuse it for other types? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAggdgSwLYEMA2UC8UDeAoKKAZ0gGMEIiAuKAIgBMB7Ac1qgB87SVhaBuAlDgokEGkWAAnBHGYCAvgLylGcCVBSJUaarC3oA2gF0sUA4JzEyFXbW68ANEJFi6AWUZo0INvIcWrCHJKGgYWWidhUVCAaRQEX38jJQAzAFc4UmAEVSgUhDRgCEkACgQipF1JCBQmOG8NOBBjJ1RgUgALGhKAN3QaTRAASiwAPigAI0ZPGrghgabjXEFq4DTJOChyiEqAOmr6NNIIEpKwap6ctKInUnXquGARzHH8QkIEFKgSts6Su8kDyeI3OEEujGuuzA1w6-3uEEeQwE7ygq3Wm1B4OuyKgfjMRiReHkeGUqnU9iIpnyhWKJU0yHQN2+9O0z3GLPQuxIQRsWEw2DsPFohJUahmuzQLH+PCISKAA)
 
 ---//
 
@@ -464,7 +462,7 @@ const mixed = ['x', 1];
 🤔 Which is the inferred type for mixed?
 
 - `('x' | 1)[]`
-- `['x | 1]`
+- `['x' | 1]`
 - `[string, number]`
 - `readonly [string, number]`
 - `(string|number)[]`
@@ -473,9 +471,7 @@ const mixed = ['x', 1];
 
 ---//
 
-### Narrowing and Widening
-
-#### Why is this important?
+#### Why is this important? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAygFgQ0lAvFA3gKClAHgLigDsBXAWwCMIAnAbmyhENMpvoF97NRkAlCAMbAERAOYAbaGnhJoAMgwNJY4HGbkqdBgHcAlgBNV61ls6Zu4aAEFcEAM6ooAawggA9gDNYiSLSgB6f0BeDcBCnagAclxwqAAfCJBw8w8SIiFdNyIoUQhgG107AAo7HwhCGUgAGigEXHzCG3sASkUcahySakzi2QBtGvyAXQ5zAQy7YChqQn4hEQkpFrxCAEYABgqGJigAJnWdAyMd1b2cZVFDtb2zTECoIMBZHagAdTdqJztMUaI7N0kAOnEblEBWyuVqhWoVQARLgoY1GlxbkFAHI7UAAYghdOIHMA3FBRmQwFiIFVtK93lBdJkAFYIABuCDsAmoujAwEwkgm-QcaChICh9C+P3+gOBoLyEKq3PhtCAA)
 
 ```ts
 type Shape = {
@@ -518,3 +514,15 @@ console.log(getAxis(r, axis));
 ### Unleash the kraken!
 
 <img src="./images/kraken.jpg" width="800px"/>
+
+---//
+
+### Indexed Access Types
+
+---//
+
+### Conditional Types
+
+---//
+
+### Mapped Types
