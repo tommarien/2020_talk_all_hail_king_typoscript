@@ -545,7 +545,77 @@ type ActionTypes = any; // ADD_TODO | COMPLETE_TODO
 
 ---//
 
+#### Arrays
+
+```ts
+type TodoListResponse = {
+  data: {
+    id: number;
+    name: string;
+    completed?: boolean;
+  }[];
+};
+
+type Todo = any;
+
+const todo: Todo = {
+  id: 1,
+  name: 'Finish the dishes',
+};
+```
+
+🤔 How can we type Todo? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAKg9gEzgGQJYGdgCULrHAO3WgF4oBvAKCigQENg6AuC6mqVBFggVwFsARhABOAbjY0CdPhBaZhqAgHNx7KAGM4fMABsIwCAgD8LAXDh66BVVAC+AbQC642+MqhIsRHChkrIN00iYChgbxZ4JF9WGk4WAEYAGjYpGRYAIgAxRQwAC1Dc6AQ83HTk1yAx)
+
+---//
+
 ### Conditional Types
+
+```ts
+type Role = 'admin' | 'power user' | 'user';
+
+type Falsy = false | 0 | '' | null | undefined;
+
+type Pull<T, K> = any;
+
+type StrongRoles = Pull<Role, 'user'>; // 'admin' | 'power user';
+type False = Pull<Falsy, undefined | null>;
+```
+
+🤔 How can we create the Pull type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBASg9gG2gXigIgIYBMC2BLAOzSgB90w4B3CAJygFcBnW4stJlgbgChvRIoAMQwJGIKKgBmI5qSgAGOWlZQC9BAjn0CWCJMIQsPPuGgAFdQgA8AFQA0UANIA+CVAwEQx-tADKwGjgCAHN4JEY3Cw0rMIgHdmYaNGdOKAB6NKgAcmx8Aiy5LIpqOg4aLJ4fIRkUKCjrYVEQB21dfQJDOTUNFKA)
+
+<p class="fragment">
+💡 `Exclude` is a build in utility type that works exactly the same!
+</p>
+
+---//
+
+#### Advanced 💪
+
+```ts
+type Nullable<T> = T | null;
+
+function toKebabCase(value: Nullable<string>): Nullable<string> {
+  return (
+    value &&
+    value
+      .replace(/([a-z])([A-Z])/g, '$1-$2')
+      .replace(/\s+/g, '-')
+      .toLowerCase()
+  );
+}
+
+console.log('Kebabbed!', toKebabCase('Hello from the dark side!'));
+```
+
+```ts
+// OH-Oh, how to fix issue?
+const kebabbed = toKebabCase('Hello from the dark side!') //
+  .toUpperCase();
+
+const willBeNull = toKebabCase(null); // Type should be null here
+```
+
+🤔 How to fix the typing here? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAcgrgGwQQwEYIgHgCoD4oC8U2UAPlAHaIIDcAUHQGZwUDGwAlgPYVTBcBpCKjQBhZAGcIACgBuyBHAgAuWNTQZME4ACcOFAOa4AlKvhINWbXsP4A3nShQdEYHB29pjp1HmLoAGQB3k5+SiE+AHQuYCisMgD00gDayAC0AF4AusYpAIJpAFo5CQYANFAARAAkAIxp1QBMlcYRTtEQscjx0gkAOhIA1KUVlWktbVCR-AAyXADuEDriUtKtTsb0AL4MrDwSXBiRCFwG0pVCIqioEAAmAISVFfyXYpIylQASEEhcUIw6LgAWz4AAtoLdkDoANZQCQcW4QR7GTYMBIJKAAeU+aUxoIqoIWfD+jA4AA8oBwJBIlAB+Oh7CjaKDQ4RoG63QjE16oFYfb6-f6AkHAcFQSEwuEIpEtaZcACqYEgy3ea3oDP2wCg8w4SAAQhBzAguS82bzVVQkJsoOjiOBoBJCYhOTdKNQoOCXEA)
 
 ---//
 
