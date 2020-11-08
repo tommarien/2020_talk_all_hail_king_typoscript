@@ -451,8 +451,6 @@ let axis2 = 'y';
 
 ---//
 
-### Narrowing and Widening
-
 #### Type Widening
 
 ```ts
@@ -518,6 +516,32 @@ console.log(getAxis(r, axis));
 ---//
 
 ### Indexed Access Types
+
+```ts
+type AddTodo = {
+  type: 'ADD_TODO';
+  payload: {
+    id: number;
+    name: string;
+  };
+};
+
+type CompleteTodo = {
+  type: 'COMPLETE_TODO';
+  payload: {
+    id: number;
+  };
+};
+```
+
+```ts
+type Actions = AddTodo | CompleteTodo;
+
+// ????
+type ActionTypes = any; // ADD_TODO | COMPLETE_TODO
+```
+
+🤔 How can we type ActionTypes? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAggJnAKgezsqBeKBvAUFKUSALigCIYARSgfUQHlL6yBufKMAQxABtlO4pPAQIBLQVAB2AVwC2AIwgAnNiKmdZEUgGdgS0ZIDmqqAF8253LiLQAwsllgeEYBBRpMOdjdJlb9AFkABQAZAFFEMLpGZhMuXn4JYRFxUhkFZRNLS2twaHdkGABjYFFkSW1PeCRUdAAfKHtHZ1cCtlwAeg6oAH4+ntzIKALi0vLEPMqsTkkQFigu2GpopigG-2DwyJX6IA)
 
 ---//
 
