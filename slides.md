@@ -577,11 +577,11 @@ type Falsy = false | 0 | '' | null | undefined;
 
 type Pull<T, K> = any;
 
-type StrongRoles = Pull<Role, 'user'>; // 'admin' | 'power user';
-type False = Pull<Falsy, undefined | null>;
+type StrongRoles = Pull<Role, 'user'>; // 'admin' | 'power user'
+type False = Pull<Falsy, undefined | null>; // false | 0 | ""
 ```
 
-🤔 How can we create the Pull type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBASg9gG2gXigIgIYBMC2BLAOzSgB90w4B3CAJygFcBnW4stJlgbgChvRIoAMQwJGIKKgBmI5qSgAGOWlZQC9BAjn0CWCJMIQsPPuGgAFdQgA8AFQA0UANIA+CVAwEQx-tADKwGjgCAHN4JEY3Cw0rMIgHdmYaNGdOKAB6NKgAcmx8Aiy5LIpqOg4aLJ4fIRkUKCjrYVEQB21dfQJDOTUNFKA)
+🤔 How can we create the Pull type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBASg9gG2gXigIgIYBMC2BLAOzSgB90w4B3CAJygFcBnW4stJlgbgChvRIoAMQwJGIKKgBmI5qSgAGOWlZQC9BAjn0CWCJMIQsPPuGgAFdQgA8AFQA0UANIA+CVAwEQx-tADKwGjgCAHN4JEY3Cw0rMIgHdmYaNGdOKAB6NKgAcmx8Aiy5LIpqOg4aLJMBYVEUKCjrarEHbV19AkM5NQ0U9MzpGrlFNjQgA)
 
 <p class="fragment">
 💡 `Exclude` is a build in utility type that works exactly the same!
@@ -620,3 +620,37 @@ const willBeNull = toKebabCase(null); // Type should be null here
 ---//
 
 ### Mapped Types
+
+```ts
+// Value Space
+const roles = {
+  ADMIN: 'admin',
+  POWER_USER: 'power_user',
+  USER: 'user',
+} as const;
+
+const permissions = {
+  CREATE_USER: 'create_user',
+  APPROVE_USER: 'approve_user',
+  BLOCK_USER: 'block_user',
+} as const;
+```
+
+```ts
+// Type Space: Don't repeat yourself
+type Role = any; // "admin" | "power_user" | "user"
+type Permission = any; // "create_user" | "approve_user" | "block_user"
+
+const permissionsForRole: any = {
+  // 💣 Complains about missing "USER"
+  admin: [...Object.values(permissions)],
+  power_user: ['create_user', 'approve_user', 'unexisting_permission'], // 💣 unexisting_permission is wrong
+  unexisting: [], // 💣 Should not work
+};
+```
+
+🤔 How can Typescript help us out here? [📽️](https://www.typescriptlang.org/play?#code/PTAEDUEMBsFcFNQGUAOkDG8BQ6D2A7AZwBdQAnXaeQ0AXlAG8tRQBBAEQFkBJAOQC5QAIkgATALYBLfEIA0zUAAUA8gHUAogCUA+gFUkWwUJS4A7vDLbYhC3IX7Dw67fkBfUJBp4ixANxYcAhJQFAspQkJJILpGBQBhTXVWABV1PQNNI3QyeEhieCsbMjsWVkVFTWVwNIdM4UgUFAoANwLnYvkWACEAGWU4gGl0xyEAI2hcdABrQpcsd09QbxJ-LBBQZIBPUOQ0TEF2AgByUhzQvNBN3FgyG2gAMyxibcRNSkR6SHxN31B1kQk0iEoAAPsITOZLO1gWChNCni8lGFJBEovgYl8fn8wEJsrl8rNiqD6o0Wm0ijDhONJjN4YEfCFkaiggAxXBkN5UQSYmJMFjrQC8G4BindAcVw4hQ0Eg0hokFG11I4Ui+AA5sJakIFGIpPhBABtAB0RuUowAVvB0MQDc0YAhCAAKUJkJVowgASgAup0QmYLIT9bicnlyS4SU1cK1CXInPh4AAPFHEaQq7ROl0EIRe7GgYWgWCxhMkZOppmRAigFGgUwUVUKfPxxPJ-VZwUipAAC2u0FEoHwuFIpnZU3mviAA)
+
+<p class="fragment">
+💡 `Record` is a build in utility type that can be used to type the permissionsForRole !
+</p>

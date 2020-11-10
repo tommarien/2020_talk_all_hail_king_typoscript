@@ -7,8 +7,8 @@ type Falsy = false | 0 | '' | null | undefined;
 
 type Pull<T, K> = any;
 
-type StrongRoles = Pull<Role, 'user'>; // 'admin' | 'power user';
-type False = Pull<Falsy, undefined | null>;
+type StrongRoles = Pull<Role, 'user'>; // 'admin' | 'power user'
+type False = Pull<Falsy, undefined | null>; // false | 0 | ""
 ```
 
 # Solution
