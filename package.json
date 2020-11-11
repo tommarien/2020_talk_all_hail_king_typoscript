@@ -6,7 +6,7 @@
   "author": "Tom Marien <tommarien@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "git-cz": "^4.7.1",
+    "git-cz": "^4.7.3",
     "prettier": "^2.1.2",
     "reveal-md": "^4.1.7",
     "rimraf": "^3.0.2",
