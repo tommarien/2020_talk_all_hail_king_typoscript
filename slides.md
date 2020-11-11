@@ -249,7 +249,7 @@ console.log(getFullName(johnFKennedy));
 
 <img src="./images/deliver-what-you-promised.jpg" width="600px"/>
 
-💡 A `type` can be use to create a `function type expression`!
+💡 A `type` can be used to create a `function type expression`!
 
 ---//
 
@@ -652,5 +652,57 @@ const permissionsForRole: any = {
 🤔 How can Typescript help us out here? [📽️](https://www.typescriptlang.org/play?#code/PTAEDUEMBsFcFNQGUAOkDG8BQ6D2A7AZwBdQAnXaeQ0AXlAG8tRQBBAEQFkBJAOQC5QAIkgATALYBLfEIA0zUAAUA8gHUAogCUA+gFUkWwUJS4A7vDLbYhC3IX7Dw67fkBfUJBp4ixANxYcAhJQFAspQkJJILpGBQBhTXVWABV1PQNNI3QyeEhieCsbMjsWVkVFTWVwNIdM4UgUFAoANwLnYvkWACEAGWU4gGl0xyEAI2hcdABrQpcsd09QbxJ-LBBQZIBPUOQ0TEF2AgByUhzQvNBN3FgyG2gAMyxibcRNSkR6SHxN31B1kQk0iEoAAPsITOZLO1gWChNCni8lGFJBEovgYl8fn8wEJsrl8rNiqD6o0Wm0ijDhONJjN4YEfCFkaiggAxXBkN5UQSYmJMFjrQC8G4BindAcVw4hQ0Eg0hokFG11I4Ui+AA5sJakIFGIpPhBABtAB0RuUowAVvB0MQDc0YAhCAAKUJkJVowgASgAup0QmYLIT9bicnlyS4SU1cK1CXInPh4AAPFHEaQq7ROl0EIRe7GgYWgWCxhMkZOppmRAigFGgUwUVUKfPxxPJ-VZwUipAAC2u0FEoHwuFIpnZU3mviAA)
 
 <p class="fragment">
-💡 `Record` is a build in utility type that can be used to type the permissionsForRole !
+💡 `Record` is a build in utility type that can be used to type the permissionsForRole!
 </p>
+
+---//
+
+#### Advanced 💪
+
+```ts
+type Customer = {
+  id: number;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+const euricom: Customer = {
+  id: 1,
+  name: 'Euricom',
+  createdAt: new Date(2020, 10, 11, 20, 51),
+  updatedAt: new Date(2020, 10, 11, 20, 51),
+};
+```
+
+```ts
+// 1. How can we create the take type
+type Take<T, K> = any;
+
+type Audited = Take<Customer, "createdAt" | "updatedAt">;
+
+const correctlyAudited: Audited = {
+  createdAt: new Date(2020, 10, 11, 21),
+  updatedAt: new Date(2020, 10, 11, 21),
+};
+
+// 2. This should fail as unknown is not a property of Customer
+type ShouldNotWork = Take<Customer, "unknown">;
+```
+
+🤔 How to create the `Take` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUUAlgCYBcUAdnKgEaYDcRNAhulUhidQOYtiAYwwQ2wCGQCCwKgBFxEQVDhgyi6bKgKJLAL4sCQ5NSRQIcHsdRV4SNJhz5W5KgEYANK2ocIVAEQAopYk1v5ewqIaMlTUEADu2ooAFABMAAwZHlBu6dlunlBZUACsbgCUESpq0VpxiToQaZl5Oa0F2cVllQQGBAQA9AM5AHRQABLIiUJs1FDx0CJiElDAABbQwGwA1pvgEASgkFAAKjsQADwn2QAKAHxOsyCGR9BScGQkEmROZ7sXdhQ6Aw2X8S1q-igAB8oP5VOpvjJ-HdDMZTMAoMYMKIhMAADYgd6fb5UIlfSROQiRZaSGI0BJJCTNYq5fKFVIVKrw2qxBmNZntdrszm9QxDIpjE5rEgIKAINbIOB4n4AMzYJDxUDYsrg1G21CmcxlNGQGLYUDAGGQkAwoCgyBVsEQQMwh32UAAygqlWQAHKmgDqyAw21+5wBzocINhuv1huRTCAA)
+
+<p class="fragment">
+💡 `Pick` is a build in utility type works exactly as our `Take` type!
+</p>
+
+---
+
+## The end
+
+<img src="./images/finish.jpg" width="600px"/><br>
+
+<small>
+... or is it a new hope ...
+</small>
+```
