@@ -660,6 +660,43 @@ const permissionsForRole: any = {
 #### Advanced 💪
 
 ```ts
+type ButtonProps = {
+  type: 'submit' | 'button' | 'reset';
+  onClick: () => void;
+  text: string;
+};
+
+type Optional<T> = any;
+```
+
+```ts
+function createProps(props: Optional<ButtonProps> = {}): ButtonProps {
+  const { type = 'submit', onClick = () => {}, text = 'Click here' } = props;
+
+  return {
+    type,
+    onClick,
+    text,
+  };
+}
+
+console.log(createProps({ text: 'Changed text' }));
+
+// 🐛 Unknown prop
+console.log(createProps({ kind: 'Changed text' }));
+```
+
+🤔 How to create the `Optional` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAQgrsYB7AdgBQE5LAZygXigG8AoKKUSALigCIc4AjAWwEthaoAfOxhZFJx60MEHBA4BuMlFQBhADasAxgGsaACgCUBAHxQAbklYATaeWAQAHsBo5gGVigDm0gL7SSlaAHkwwVlQAQwUAHgAVfUIglBBPADM4FGUA1ChlUSDLTGwcDTAsXBo-VJQQ0PhEVBzcKOI3LRpKgRq8UnJlVHtiCnBoQnomNg4AGlkURRVVAihtPXqxyxsZ2km1KAALCFFONxmC3M9yUWA4DBRiGQs+kavxtdVb8gtrYCeoDxI3EhJOlBwkAoIAA6BRIZwaDIQLIQVoaIgUV40VYbGLOCAmRE2XZaLTSP4AoGg8GQzLZQp5BGqJwmZFyVEuDFYjgfXGSKAAeg5UEAvBuAbB2oABVFCqFBIADuFwOYCAA)
+
+<p class="fragment">
+💡 `Partial` is a build in utility type works exactly as our `Optional` type!
+</p>
+
+---//
+
+#### More Advanced 💪
+
+```ts
 type Customer = {
   id: number;
   name: string;
@@ -679,7 +716,7 @@ const euricom: Customer = {
 // 1. How can we create the take type
 type Take<T, K> = any;
 
-type Audited = Take<Customer, "createdAt" | "updatedAt">;
+type Audited = Take<Customer, 'createdAt' | 'updatedAt'>;
 
 const correctlyAudited: Audited = {
   createdAt: new Date(2020, 10, 11, 21),
@@ -687,7 +724,7 @@ const correctlyAudited: Audited = {
 };
 
 // 2. This should fail as unknown is not a property of Customer
-type ShouldNotWork = Take<Customer, "unknown">;
+type ShouldNotWork = Take<Customer, 'unknown'>;
 ```
 
 🤔 How to create the `Take` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUUAlgCYBcUAdnKgEaYDcRNAhulUhidQOYtiAYwwQ2wCGQCCwKgBFxEQVDhgyi6bKgKJLAL4sCQ5NSRQIcHsdRV4SNJhz5W5KgEYANK2ocIVAEQAopYk1v5ewqIaMlTUEADu2ooAFABMAAwZHlBu6dlunlBZUACsbgCUESpq0VpxiToQaZl5Oa0F2cVllQQGBAQA9AM5AHRQABLIiUJs1FDx0CJiElDAABbQwGwA1pvgEASgkFAAKjsQADwn2QAKAHxOsyCGR9BScGQkEmROZ7sXdhQ6Aw2X8S1q-igAB8oP5VOpvjJ-HdDMZTMAoMYMKIhMAADYgd6fb5UIlfSROQiRZaSGI0BJJCTNYq5fKFVIVKrw2qxBmNZntdrszm9QxDIpjE5rEgIKAINbIOB4n4AMzYJDxUDYsrg1G21CmcxlNGQGLYUDAGGQkAwoCgyBVsEQQMwh32UAAygqlWQAHKmgDqyAw21+5wBzocINhuv1huRTCAA)

@@ -1,47 +1,30 @@
 # Problem
 
 ```ts
-type Customer = {
-  id: number;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
+type ButtonProps = {
+  type: 'submit' | 'button' | 'reset';
+  onClick: () => void;
+  text: string;
 };
 
-const euricom: Customer = {
-  id: 1,
-  name: 'Euricom',
-  createdAt: new Date(2020, 10, 11, 20, 51),
-  updatedAt: new Date(2020, 10, 11, 20, 51),
-};
+type Optional<T> = any;
 
-// 1. How can we create the take type
-type Take<T, K> = any;
+function createProps(props: Optional<ButtonProps> = {}): ButtonProps {
+  const { type = 'submit', onClick = () => {}, text = 'Click here' } = props;
 
-type Audited = Take<Customer, 'createdAt' | 'updatedAt'>;
+  return {
+    type,
+    onClick,
+    text,
+  };
+}
 
-const correctlyAudited: Audited = {
-  createdAt: new Date(2020, 10, 11, 21),
-  updatedAt: new Date(2020, 10, 11, 21),
-};
-
-// 2. This should fail as unknown is not a property of Customer
-type ShouldNotWork = Take<Customer, 'unknown'>;
+console.log(createProps({ text: 'Changed text' }));
+console.log(createProps({ kind: 'Changed text' })); // 🐛 Unknown prop
 ```
 
 # Solution
 
 ```ts
-// 1. How can we create the take type
-type Take<T, K extends keyof T> = { [P in K]: T[P] };
-
-type Audited = Take<Customer, 'createdAt' | 'updatedAt'>;
-
-const correctlyAudited: Audited = {
-  createdAt: new Date(2020, 10, 11, 21),
-  updatedAt: new Date(2020, 10, 11, 21),
-};
-
-// 2. This should fail as unknown is not a property of Customer
-type ShouldNotWork = Take<Customer, 'unknown'>;
+type Optional<T> = { [P in keyof T]?: T[P] };
 ```
