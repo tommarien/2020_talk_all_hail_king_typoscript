@@ -694,7 +694,7 @@ console.log(createProps({ kind: 'Changed text' }));
 
 ---//
 
-#### More Advanced 💪
+#### Advanced 💪💪
 
 ```ts
 type Customer = {
@@ -731,6 +731,44 @@ type ShouldNotWork = Take<Customer, 'unknown'>;
 
 <p class="fragment">
 💡 `Pick` is a build in utility type works exactly as our `Take` type!
+</p>
+
+---//
+
+#### Advanced 💪💪💪
+
+```ts
+type Customer = {
+  id: number;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+```
+
+```ts
+// 1. How can we create the Except type
+type Except<T, K extends keyof T> = {
+  [P in Exclude<keyof T, K>]: T[P];
+};
+
+const supplier: Except<Customer, 'createdAt' | 'updatedAt'> = {
+  id: 2,
+  name: 'Euricom',
+  createdAt: new Date(2020, 10, 16, 20, 26), // should not work
+  updatedAt: new Date(2020, 10, 16, 20, 26), // should not work
+};
+```
+
+```ts
+// 2. This should fail as unknown is not a property of Customer
+type ShouldNotWork = Except<Customer, 'unknown'>;
+```
+
+🤔 How to create the `Except` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUxUAlgCYBcUAdnKgEaYDcRJNAhutUhqTQHNWJKAGMMEDsAjkAgsGoARKRGEk4YcirkKoy6awC+rAgHpTUAIwA6KAAlkAdzEcaUR9HGTpUYAAtoAFEAD1EIMGBfcAgCUEgoELCInChXEBNRZBokKAQNMAAbUkxqRPDgAB54JDRMABooACIvbXlGqAAfJo0taR1GgD4UwhEKagAmOrZiTm4oAHJAuD5M1HmpkRa++WoaCGd9CAAKcYAGM4bLU8uANgaLqHGbgEoG81y-ZDgC8lpkSMcyAwAGtplAeq1dHsDioTudrlYEZY7o8EU9XlB3ghPt9fjR-u4gaDjAQzBZxrYACp+UgID5fH5QABmHFIBVSdLgNGB+Mcblpf0iHCgYAwyEgGFAUGQTNgiBQ6AwsWiUAAyjifgA5f4AdSJKTKESq8tqGAajS5PKcNEGzCAA)
+
+<p class="fragment">
+💡 `Omit` is a build in utility type works exactly as our `Except` type!
 </p>
 
 ---
