@@ -79,7 +79,7 @@ let numbers: number[] = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
 let point: [number, number] = [100, 200];
 ```
 
-🤔 What is the difference between `string` and `String`? [📽️](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAFgUwDZJARgFw2gJwJZgDmMAvDAOSIojkDcAUKJLFagExa4HFmXKp16jcBBBIEAOlSEAFOSgB3ENij4iEGAEMcCGAgCOAV01JyAGnj90pEmVYg2ASgbDml6gGYsAZVXdSMGAICjC+arJ81OTOrtDuqAAsPn5EAUEhYdxy9tEuTKLiUiARisqZ6lo6gSCwBsamFvYeNnZWCTH0AGaGYMBQeOAweBDeCJqiYDJgmgC2CJwphI4wAN70MBswOlCGOGAwANrkEAAO4eYUEIYzczgX5JqGOzNg9woEUAh3ALoSBMBIQwAEwQECmswQMQAvkJ8mJJNI5FxUgAiU7hFFDDSabBjCYXYajcbgJFnbjRGIAekpMDhhUR5HKxDRZKImOG1VgOIgePABJGvMm6VCi1J50cEtoQA)
+🤔 What is the difference between `string` and `String`? [📽️](https://www.typescriptlang.org/play?ssl=15&ssc=67&pln=6&pc=4#code/MYewdgzgLgBAFgUwDZJARgFw2gJwJZgDmMAvDAOSIojkDcAUKJLFagExa4HFmXKp16jcBBBIEAOlSEAFOSgB3ENij4iEGAEMcCGAgCOAV01JyAGnj90pEmVYg2ASgb0A9K5hNol6gGYsAMqq3KQwYAgKMEFqsnzU5M5uHl4sVgAsgcFEoeGR0dxy9gku7p4iYpLScorK+epaOmEgsAbGphb2vjZ26YlJMABmhmDAUHjgMHgQAQiaomAyYJoAtgicWYSOMADe-TD7MDpQhjhgMADa5BAADjHmFBCGy6s49+SahsfLYG8KBFAIV4AXQkBGASEMABMEBBFisEIlSgBfISlLwVKQgWJcbIAIhuMVxkw0mmws3m9ymMzm4DkBO4CURyXK4kxsTqxHxt24RKmTVgpIg5PAlOmwoWuSiGzp3KIjOcQA)
 
 ---//
 
