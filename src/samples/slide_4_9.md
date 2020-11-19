@@ -11,7 +11,8 @@ type Customer = {
 // 1. How can we create the Except type
 type Except = any;
 
-const supplier: Except<Customer, 'createdAt' | 'updatedAt'> = {
+type Supplier = Except<Customer, 'createdAt' | 'updatedAt'>;
+const supplier: Supplier = {
   id: 2,
   name: 'Euricom',
   createdAt: new Date(2020, 10, 16, 20, 26), // should not work

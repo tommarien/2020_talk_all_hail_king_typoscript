@@ -727,7 +727,7 @@ const correctlyAudited: Audited = {
 type ShouldNotWork = Take<Customer, 'unknown'>;
 ```
 
-🤔 How to create the `Take` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUUAlgCYBcUAdnKgEaYDcRNAhulUhidQOYtiAYwwQ2wCGQCCwKgBFxEQVDhgyi6bKgKJLAL4sCQ5NSRQIcHsdRV4SNJhz5W5KgEYANK2ocIVAEQAopYk1v5ewqIaMlTUEADu2ooAFABMAAwZHlBu6dlunlBZUACsbgCUESpq0VpxiToQaZl5Oa0F2cVllQQGBAQA9AM5AHRQABLIiUJs1FDx0CJiElDAABbQwGwA1pvgEASgkFAAKjsQADwn2QAKAHxOsyCGR9BScGQkEmROZ7sXdhQ6Aw2X8S1q-igAB8oP5VOpvjJ-HdDMZTMAoMYMKIhMAADYgd6fb5UIlfSROQiRZaSGI0BJJCTNYq5fKFVIVKrw2qxBmNZntdrszm9QxDIpjE5rEgIKAINbIOB4n4AMzYJDxUDYsrg1G21CmcxlNGQGLYUDAGGQkAwoCgyBVsEQQMwh32UAAygqlWQAHKmgDqyAw21+5wBzocINhuv1huRTCAA)
+🤔 How to create the `Take` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUUAlgCYBcUAdnKgEaYDcRNAhulUhidQOYtiAYwwQ2wCGQCCwKgBFxEQVDhgyi6bKgKJLAL4sCQ5NSRQIcHsdRV4SNJhz5W5KgEYANK2ocIVAEQAopYk1v5ewqIaMlTUEADu2ooAFABMAAwZHlBu6dlunlBZUACsbgCUESpq0VpxiToQaZl5Oa0F2cVllQQGBAQA9AM5AHRQABLIiUJs1FDx0CJiElDAABbQwGwA1pvgEASgkFAAKjsQADwn2QDSAHxOsyCGR9BScGQkEmROZ7sXdhQ6Aw2X8S1q-igAB8oP5VOpvjJ-HdDMZTMAoMYMKIhMAADYgd6fb5UIlfSROQiRZaSGI0BJJCTNYq5fKFVIVKrw2qxBmNZntdrszm9QxDIpjE5rEgIKAINbIOB4n4AMzYJDxUDYsrg1G21CmcxlNGQGLYUDAGGQkAwoCgyBVsEQQMwh32UAAygqlWQAHKmgDqyAw21+5wBzocINhuv1huRTCAA)
 
 <p class="fragment">
 💡 `Pick` is a build in utility type works exactly as our `Take` type!
@@ -748,11 +748,10 @@ type Customer = {
 
 ```ts
 // 1. How can we create the Except type
-type Except<T, K extends keyof T> = {
-  [P in Exclude<keyof T, K>]: T[P];
-};
+type Except = any;
 
-const supplier: Except<Customer, 'createdAt' | 'updatedAt'> = {
+type Supplier = Except<Customer, "createdAt" | "updatedAt">
+const supplier: Supplier> = {
   id: 2,
   name: 'Euricom',
   createdAt: new Date(2020, 10, 16, 20, 26), // should not work
@@ -765,7 +764,7 @@ const supplier: Except<Customer, 'createdAt' | 'updatedAt'> = {
 type ShouldNotWork = Except<Customer, 'unknown'>;
 ```
 
-🤔 How to create the `Except` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUxUAlgCYBcUAdnKgEaYDcRJNAhutUhqTQHNWJKAGMMEDsAjkAgsGoARKRGEk4YcirkKoy6awC+rAgHpTUAIwA6KAAlkAdzEcaUR9HGTpUYAAtoAFEAD1EIMGBfcAgCUEgoELCInChXEBNRZBokKAQNMAAbUkxqRPDgAB54JDRMABooACIvbXlGqAAfJo0taR1GgD4UwhEKagAmOrZiTm4oAHJAuD5M1HmpkRa++WoaCGd9CAAKcYAGM4bLU8uANgaLqHGbgEoG81y-ZDgC8lpkSMcyAwAGtplAeq1dHsDioTudrlYEZY7o8EU9XlB3ghPt9fjR-u4gaDjAQzBZxrYACp+UgID5fH5QABmHFIBVSdLgNGB+Mcblpf0iHCgYAwyEgGFAUGQTNgiBQ6AwsWiUAAyjifgA5f4AdSJKTKESq8tqGAajS5PKcNEGzCAA)
+🤔 How to create the `Except` type? [📽️](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgrgZ2AewLYQE5QLxQN4BQUUAlgCYBcUAdnKgEaYDcRNAhulUhidQOYtiAYwwQ2wCGQCCwKgBFxEQVDhgyi6bKgKJLAL4sCAeiNQAjADooACWQB3KELbUod6CLESowABbQAogAeQhBgwN7gEASgkFBBIWE4UM4ghjHQAMqqYAA2JJhJ8aHAADzwSGiYADRQAEQeGjK1UAA+darqEpq1AHwsQsjUSFAI2XmYVFlguflYuITE5FQATFWs1BwQVLX+cDwDqLVrwqKNWtQQDjoQABTLAAwPNWb3zwBsNU9Qy28AlDUmEY+ZBwHJkGjIcJ2ZAYADWrA6ZyoFyuijuj1e5kxZg+30xP3+UEBCGBoPB1Ehrhh8IMBGMpmWVgAKj4SAggSCwVAAGZsEg5ZLsuDUWEUuwuNkQ8JsKBgDDISAYUBQZDc2CIFDoDDRSJQDKksEAOUhAHVqYVgsUyhrKhgarVhaL7NRekwgA)
 
 <p class="fragment">
 💡 `Omit` is a build in utility type works exactly as our `Except` type!
@@ -778,6 +777,5 @@ type ShouldNotWork = Except<Customer, 'unknown'>;
 <img src="./images/finish.jpg" width="600px"/><br>
 
 <small>
-... or is it a new hope ...
+... or is it a new hope? ...
 </small>
-```
